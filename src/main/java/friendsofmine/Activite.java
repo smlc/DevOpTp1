@@ -1,23 +1,16 @@
 package friendsofmine;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by walid on 19/10/2016.
  */
 public class Activite {
 
+    @NotNull
     private String titre;
     private String descriptif;
 
-    public String getTitre() {
-        return this.titre;
-    }
 
-    public void setTitre (String t) {
-        if ((t == null) || (t == "")) {
-            this.titre = "unTitre";
-        } else {
-            this.titre = t;
-        }
-    }
 
 }
