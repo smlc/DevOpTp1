@@ -10,7 +10,11 @@ import spock.lang.Specification
 import javax.validation.ConstraintViolationException
 
 /**
+<<<<<<< HEAD
  * Created by franck on 18/10/2016.
+=======
+ * Created by walid on 26/10/2016.
+>>>>>>> 7b4bd7d09c5992851e01b2e8d1442bfffb16ce85
  */
 @ContextConfiguration
 @SpringBootTest

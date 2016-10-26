@@ -1,6 +1,6 @@
 package friendsofmine
 
-import spock.lang.Specification
+
 import spock.lang.Unroll
 
 import javax.validation.Validation

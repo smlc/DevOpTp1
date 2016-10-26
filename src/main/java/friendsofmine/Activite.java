@@ -1,13 +1,13 @@
 package friendsofmine;
 
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 
 
 /**
@@ -18,7 +18,6 @@ import javax.validation.constraints.Size;
 @Table(name="ACTIVITE")
 public class Activite {
 
-
     @Id
     @GeneratedValue
     private Long id;
@@ -27,6 +26,5 @@ public class Activite {
     @Size(min=1)
     private String titre;
     private String descriptif;
-
 
 }

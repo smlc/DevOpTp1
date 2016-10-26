@@ -13,8 +13,8 @@ public class UtilisateurService {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
-
-    public void saveUtilisateur(Utilisateur utilisateur){
-        utilisateurRepository.save(utilisateur);
+    void saveUtilisateur (Utilisateur utilisateur) {
+        this.utilisateurRepository.save(utilisateur);
     }
+
 }

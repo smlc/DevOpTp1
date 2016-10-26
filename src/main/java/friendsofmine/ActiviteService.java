@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+<<<<<<< HEAD
  * Created by mars on 26/10/16.
  */
 @Service
@@ -15,4 +16,5 @@ public class ActiviteService {
     public void saveActivite(Activite activite){
         activiteRepository.save(activite);
     }
+
 }
