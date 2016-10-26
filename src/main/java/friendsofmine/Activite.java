@@ -1,11 +1,13 @@
 package friendsofmine;
 
 
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -13,15 +15,16 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
+@Table(name="ACTIVITE")
 public class Activite {
 
 
-    @NotNull
     @Id
+    @GeneratedValue
     private Long id;
 
     @NotNull
-    @NotBlank
+    @Size(min=1)
     private String titre;
     private String descriptif;
 
