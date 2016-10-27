@@ -5,11 +5,9 @@ import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository
 
 /**
- * Created by walid on 26/10/2016.
+ * Created by mars on 26/10/16.
  */
+
 @Repository
-interface ActiviteRepository extends PagingAndSortingRepository {
-
-    // void save(Activite activite);
-
+interface ActiviteRepository extends PagingAndSortingRepository<Activite,Long> {
 }

@@ -5,11 +5,9 @@ import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository
 
 /**
- * Created by walid on 26/10/2016.
+ * Created by mars on 26/10/16.
  */
+
 @Repository
-interface UtilisateurRepository extends PagingAndSortingRepository {
-
-    // void save(Utilisateur utilisateur);
-
+interface UtilisateurRepository extends PagingAndSortingRepository<Utilisateur,Long> {
 }

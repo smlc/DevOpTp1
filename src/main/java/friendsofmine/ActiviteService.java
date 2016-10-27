@@ -5,16 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by walid on 26/10/2016.
+ * Created by mars on 26/10/16.
  */
+
 @Service
 public class ActiviteService {
-
     @Autowired
     ActiviteRepository activiteRepository;
 
-    void saveActivite(Activite a) {
-        this.activiteRepository.save(a);
+    public void saveActivite(Activite activite){
+        activiteRepository.save(activite);
     }
 
 }

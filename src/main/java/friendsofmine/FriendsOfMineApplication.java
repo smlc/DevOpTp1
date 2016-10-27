@@ -9,4 +9,5 @@ public class FriendsOfMineApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FriendsOfMineApplication.class, args);
 	}
+
 }

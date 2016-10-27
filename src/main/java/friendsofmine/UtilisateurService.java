@@ -5,16 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by walid on 26/10/2016.
+ * Created by mars on 26/10/16.
  */
+
 @Service
 public class UtilisateurService {
 
     @Autowired
-    UtilisateurRepository utilisateurRepository;
+    private UtilisateurRepository utilisateurRepository;
 
-    void saveUtilisateur (Utilisateur u) {
-        this.utilisateurRepository.save(u);
+    void saveUtilisateur (Utilisateur utilisateur) {
+        this.utilisateurRepository.save(utilisateur);
     }
 
 }
