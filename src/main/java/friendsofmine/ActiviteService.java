@@ -18,7 +18,7 @@ public class ActiviteService {
 
         activiteRepository.save(activite);
 
-        if(!responsable.getActivites().contains(activite)){
+        if((responsable != null) && (responsable.getActivites() != null) && (!responsable.getActivites().contains(activite))){
             responsable.getActivites().add(activite);
         }
         return activite;
