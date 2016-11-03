@@ -13,8 +13,15 @@ public class ActiviteService {
     @Autowired
     ActiviteRepository activiteRepository;
 
-    public void saveActivite(Activite activite){
+    public Activite saveActivite(Activite activite){
+        Utilisateur responsable = activite.getResponsable();
+
         activiteRepository.save(activite);
+
+        if(!responsable.getActivites().contains(activite)){
+            responsable.getActivites().add(activite);
+        }
+        return activite;
     }
 
 }

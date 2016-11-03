@@ -1,15 +1,14 @@
 package friendsofmine;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by walid on 19/10/2016.
@@ -18,6 +17,10 @@ import java.util.Date;
 @Entity
 @Table(name="UTILISATEUR")
 public class Utilisateur {
+
+    public Utilisateur() {
+        activites = new ArrayList<Activite>();
+    }
 
     @Id
     @GeneratedValue
@@ -41,4 +44,10 @@ public class Utilisateur {
 
     private Date dateNaissance;
 
+    @OneToMany(mappedBy="responsable")
+    private List<Activite> activites;
+
+    public List<Activite> getActivites() {
+        return activites;
+    }
 }
