@@ -5,11 +5,7 @@ import org.springframework.data.repository.PagingAndSortingRepository
 import spock.lang.Specification
 
 /**
-<<<<<<< HEAD
- * Created by walid on 26/10/2016.
-=======
- * Created by walid on 26/10/2016
->>>>>>> d057dd19572808bbf819430d1f563d131233365a
+ * Created by franck on 18/10/2016.
  */
 class UtilisateurServiceTest extends Specification {
 

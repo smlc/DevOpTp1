@@ -1,5 +1,6 @@
 package friendsofmine
 
+
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -7,9 +8,7 @@ import javax.validation.Validation
 import javax.validation.Validator
 import javax.validation.ValidatorFactory
 
-/**
- * Created by walid on 19/10/2016.
- */
+
 class UtilisateurTest extends Specification {
 
     Validator validator

@@ -1,23 +1,15 @@
 package friendsofmine
 
-<<<<<<< HEAD
-import spock.lang.Specification
-=======
-
->>>>>>> d057dd19572808bbf819430d1f563d131233365a
-import spock.lang.Unroll
-
 import javax.validation.Validation
 import javax.validation.Validator
 import javax.validation.ValidatorFactory
 
-<<<<<<< HEAD
-=======
 import spock.lang.Specification
+import spock.lang.Unroll
 
->>>>>>> d057dd19572808bbf819430d1f563d131233365a
+
 /**
- * Created by walid on 19/10/2016.
+ * Created by franck on 17/10/2016.
  */
 class ActiviteTest extends Specification {
 
