@@ -23,10 +23,11 @@ public class Activite {
     private String descriptif;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Utilisateur responsable;
 
     public Utilisateur getResponsable() {
         return responsable;
     }
+
 }

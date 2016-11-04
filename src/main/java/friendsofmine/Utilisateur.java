@@ -50,4 +50,5 @@ public class Utilisateur {
     public List<Activite> getActivites() {
         return activites;
     }
+
 }
