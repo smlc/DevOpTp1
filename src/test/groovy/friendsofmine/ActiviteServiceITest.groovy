@@ -1,10 +1,9 @@
 package friendsofmine
 
-import friendsofmine.repositories.ActiviteRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.test.context.ContextConfiguration
+import org.springframework.transaction.annotation.Transactional
 import spock.lang.Specification
 
 import javax.validation.ConstraintViolationException
@@ -14,9 +13,11 @@ import javax.validation.ConstraintViolationException
  */
 @ContextConfiguration
 @SpringBootTest
+@Transactional
 class ActiviteServiceITest extends Specification {
 
     @Autowired ActiviteService activiteService
+    @Autowired Bootstrap bootstrap
 
     def "test save a valid activite"() {
 
@@ -34,6 +35,19 @@ class ActiviteServiceITest extends Specification {
         bob.activites.size() == 1
         bob.activites.first().titre == natation.titre
 
+        when: "Creating a new activite with Bob as responsable"
+        Activite taekwondo = new Activite(titre: "taekwondo", responsable: bob)
+
+        and: "the activite is saved"
+        activiteService.saveActivite(taekwondo);
+
+        then: "the activite has an id becaus it has been saved"
+        taekwondo.id != null
+
+        and: "bob has two activites"
+        bob.activites.size() == 2
+        bob.activites.last().titre == taekwondo.titre
+
     }
 
     def "test save a non valid activite"() {
@@ -48,5 +62,42 @@ class ActiviteServiceITest extends Specification {
 
         and: "activite has still null id"
         natation.id == null
+    }
+
+    def "test findAllActivites"() {
+
+        given: "The instance of InitialisationService provided by the bootstrap object"
+        InitialisationService initialisationService = bootstrap.initialisationService
+
+        and: "2 utilisateurs provided by the initialisation service"
+        initialisationService.mary
+        initialisationService.thom
+
+        and:  "3 activities provided by the initialisation service"
+        initialisationService.lindyHop
+        initialisationService.randonnee
+        initialisationService.taekwondo
+
+        when: "requesting all activites"
+        Iterable<Activite> iterOnActivites = activiteService.findAllActivites()
+        def activites = iterOnActivites as List<Activite>
+
+        then: "the result references 3 activites"
+        activites.size() == 3
+
+        and: "the activities are sorted by titre"
+        activites[0].titre == initialisationService.lindyHop.titre
+        activites[1].titre == initialisationService.randonnee.titre
+        activites[2].titre == initialisationService.taekwondo.titre
+
+        and: "fetched activites have the good responsable"
+        activites[0].responsable.nom == initialisationService.mary.nom
+        activites[1].responsable.nom == initialisationService.mary.nom
+        activites[2].responsable.nom == initialisationService.thom.nom
+
+        and: "Responsables have their activites"
+        initialisationService.mary.activites.size() == 2
+        initialisationService.thom.activites.size() == 1
+
     }
 }
