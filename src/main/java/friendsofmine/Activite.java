@@ -12,10 +12,6 @@ import javax.validation.constraints.Size;
 @Table(name="ACTIVITE")
 public class Activite {
 
-    public Utilisateur getResponsable() {
-        return responsable;
-    }
-
     @Id
     @GeneratedValue
     private Long id;
@@ -25,10 +21,12 @@ public class Activite {
     private String titre;
 
     private String descriptif;
+
     @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
-private Utilisateur responsable;
+    private Utilisateur responsable;
 
-
-
+    public Utilisateur getResponsable() {
+        return responsable;
+    }
 }

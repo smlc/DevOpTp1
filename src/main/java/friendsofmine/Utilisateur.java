@@ -1,10 +1,7 @@
 package friendsofmine;
 
 import javax.persistence.*;
-<<<<<<< HEAD
-=======
 
->>>>>>> de62a82e1b9bb5fe161d4129f38fccbcc563189f
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -46,22 +43,11 @@ public class Utilisateur {
     private String sexe;
 
     private Date dateNaissance;
-@OneToMany(mappedBy = "responsable")
-    List<Activite> activites;
 
-<<<<<<< HEAD
-    public List<Activite> getActivites() {
-        return activites;
-    }
-
-    public Utilisateur()
-    { activites = new ArrayList<Activite>() ;}
-=======
     @OneToMany(mappedBy="responsable")
     private List<Activite> activites;
 
     public List<Activite> getActivites() {
         return activites;
     }
->>>>>>> de62a82e1b9bb5fe161d4129f38fccbcc563189f
 }
