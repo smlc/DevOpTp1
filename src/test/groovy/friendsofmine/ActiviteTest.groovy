@@ -1,23 +1,15 @@
 package friendsofmine
 
-<<<<<<< HEAD
 import spock.lang.Specification
-=======
-
->>>>>>> d057dd19572808bbf819430d1f563d131233365a
 import spock.lang.Unroll
 
 import javax.validation.Validation
 import javax.validation.Validator
 import javax.validation.ValidatorFactory
 
-<<<<<<< HEAD
-=======
-import spock.lang.Specification
 
->>>>>>> d057dd19572808bbf819430d1f563d131233365a
 /**
- * Created by walid on 19/10/2016.
+ * Created by franck on 17/10/2016.
  */
 class ActiviteTest extends Specification {
 
@@ -32,7 +24,7 @@ class ActiviteTest extends Specification {
     void "test la validite d'une activite valide ayant pour titre #unTitre"(String unTitre, String unDescriptif) {
 
         given: "une activite initialise avec un titre non vide et un descriptif"
-        Activite activite = new Activite(titre: unTitre, descriptif: unDescriptif)
+        Activite activite = new Activite(titre: "un titre", responsable: Mock(Utilisateur), descriptif: unDescriptif)
 
         expect: "l'activite est valide"
         validator.validate(activite).empty
@@ -46,18 +38,19 @@ class ActiviteTest extends Specification {
     }
 
     @Unroll
-    void "test l'invalidite d'une activite non valide ayant pour titre #unTitre"(String unTitre, String _) {
+    void "test l'invalidite d'une activite non valide ayant pour titre #unTitre"(String unTitre, Utilisateur unResponsable) {
 
         given: "une activite initialise avec un titre vide"
-        Activite activite = new Activite(titre: unTitre)
+        Activite activite = new Activite(titre: unTitre, responsable: unResponsable)
 
         expect: "l'activite est invalide"
         !validator.validate(activite).empty
 
         where:
-        unTitre | _
-        null    | _
-        ""      | _
+        unTitre    | unResponsable
+        null       | Mock(Utilisateur)
+        ""         | Mock(Utilisateur)
+        "un titre" | null
 
     }
 }
