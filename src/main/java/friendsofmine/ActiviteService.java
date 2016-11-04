@@ -15,14 +15,16 @@ public class ActiviteService {
     @Autowired
     ActiviteRepository activiteRepository;
 
-    public Activite saveActivite(Activite activite) {
+    public Activite saveActivite(Activite activite){
+        Utilisateur responsable = activite.getResponsable();
+
         activiteRepository.save(activite);
-        Utilisateur ut = activite.getResponsable();
-        if (!ut.getActivites().contains(activite)) {
 
-ut.getActivites().add(activite);
-
+        if((responsable != null) && (responsable.getActivites() != null) && (!responsable.getActivites().contains(activite))){
+            responsable.getActivites().add(activite);
         }
         return activite;
     }
+
+
 }

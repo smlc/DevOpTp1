@@ -29,4 +29,6 @@ public class Activite {
     @ManyToOne(cascade = CascadeType.ALL)
 private Utilisateur responsable;
 
+
+
 }
