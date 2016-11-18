@@ -17,7 +17,7 @@ public class InitialisationService {
     private Utilisateur mary = new Utilisateur("Mary", "Mary", "mary@test.fr", "F", new Date());
     private Utilisateur thom = new Utilisateur("Thom", "Thom", "thom@test.fr", "M", new Date());
 
-    private Activite lindyHop = new Activite("", "Cool", mary);
+    private Activite lindyHop = new Activite("lindyHop", "Cool", mary);
     private Activite randonnee = new Activite("randonnee", "Cool", mary);
     private Activite taekwondo = new Activite("taekwondo", "Cool", thom);
 
