@@ -2,6 +2,7 @@ package friendsofmine;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -10,12 +11,13 @@ import java.util.Date;
  */
 
 @Service
+@Transactional
 public class InitialisationService {
 
     private Utilisateur mary = new Utilisateur("Mary", "Mary", "mary@test.fr", "F", new Date());
     private Utilisateur thom = new Utilisateur("Thom", "Thom", "thom@test.fr", "M", new Date());
 
-    private Activite lindyHop = new Activite("lindiHop", "Cool", mary);
+    private Activite lindyHop = new Activite("", "Cool", mary);
     private Activite randonnee = new Activite("randonnee", "Cool", mary);
     private Activite taekwondo = new Activite("taekwondo", "Cool", thom);
 
