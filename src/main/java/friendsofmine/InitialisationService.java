@@ -52,8 +52,4 @@ public class InitialisationService {
     public Activite getTaekwondo() {
         return taekwondo;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2bb882b9df7a7058421fbf8443330127e8ec78e0
