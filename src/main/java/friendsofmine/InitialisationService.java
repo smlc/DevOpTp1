@@ -32,4 +32,24 @@ public class InitialisationService {
         activiteService.saveActivite(randonnee);
         activiteService.saveActivite(taekwondo);
     }
+
+    public Utilisateur getMary() {
+        return mary;
+    }
+
+    public Utilisateur getThom() {
+        return thom;
+    }
+
+    public Activite getLindyHop() {
+        return lindyHop;
+    }
+
+    public Activite getRandonnee() {
+        return randonnee;
+    }
+
+    public Activite getTaekwondo() {
+        return taekwondo;
+    }
 }
