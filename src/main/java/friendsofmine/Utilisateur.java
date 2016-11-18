@@ -18,10 +18,6 @@ import java.util.List;
 @Table(name="UTILISATEUR")
 public class Utilisateur {
 
-    public Utilisateur() {
-        activites = new ArrayList<Activite>();
-    }
-
     @Id
     @GeneratedValue
     private Long id;
@@ -47,8 +43,41 @@ public class Utilisateur {
     @OneToMany(mappedBy="responsable")
     private List<Activite> activites;
 
+    public Utilisateur() {
+        this.activites = new ArrayList<>(50);
+    }
+
+    public Utilisateur(String nom) {
+        this.nom = nom;
+        this.activites = new ArrayList<>(50);
+    }
+
+    public Utilisateur(String nom, String prenom, String email, String sexe, Date dateNaissance) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.sexe = sexe;
+        this.dateNaissance = dateNaissance;
+        this.activites = new ArrayList<>(50);
+    }
+
+    public Utilisateur(String nom, String prenom, String email, String sexe) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.sexe = sexe;
+        this.activites = new ArrayList<>(50);
+    }
+
     public List<Activite> getActivites() {
         return activites;
     }
 
+    public void setActivites(List<Activite> liste) {
+        this.activites = liste;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

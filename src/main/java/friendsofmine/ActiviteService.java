@@ -1,11 +1,12 @@
 package friendsofmine;
 
 import friendsofmine.repositories.ActiviteRepository;
+import friendsofmine.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
+import javax.validation.ConstraintViolationException;
 
 /**
  * Created by mars on 26/10/16.
@@ -17,15 +18,25 @@ public class ActiviteService {
     @Autowired
     ActiviteRepository activiteRepository;
 
-    public Activite saveActivite(Activite activite){
-        Utilisateur responsable = activite.getResponsable();
+    @Autowired
+    UtilisateurRepository utilisateurRepository;
 
-        activiteRepository.save(activite);
+    @Autowired
+    UtilisateurService utilisateurService;
 
-        if((responsable != null) && (responsable.getActivites() != null) && (!responsable.getActivites().contains(activite))){
-            responsable.getActivites().add(activite);
+    public void saveActivite(Activite activite) {
+
+        if (activite.getResponsable() == null) {
+            throw new ConstraintViolationException(null);
+        } else if (activite.getResponsable().getId() == null) {
+            utilisateurRepository.save(activite.getResponsable());
         }
-        return activite;
+
+        if (!activite.getResponsable().getActivites().contains(activite)){
+            activite.getResponsable().getActivites().add(activite);
+            activiteRepository.save(activite);
+        }
+
     }
 
     public Iterable<Activite> findAllActivites(){

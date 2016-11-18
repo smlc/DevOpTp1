@@ -23,8 +23,22 @@ public class Activite {
     private String descriptif;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private Utilisateur responsable;
+
+    public Activite() {
+    }
+
+    public Activite(String titre, Utilisateur responsable) {
+        this.titre = titre;
+        this.responsable = responsable;
+    }
+
+    public Activite(String titre, String descriptif, Utilisateur responsable) {
+        this.titre = titre;
+        this.descriptif = descriptif;
+        this.responsable = responsable;
+    }
 
     public Utilisateur getResponsable() {
         return responsable;
