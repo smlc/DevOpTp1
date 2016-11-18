@@ -2,7 +2,10 @@ package friendsofmine;
 
 import friendsofmine.repositories.ActiviteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.Iterator;
 
 /**
  * Created by mars on 26/10/16.
@@ -23,6 +26,10 @@ public class ActiviteService {
             responsable.getActivites().add(activite);
         }
         return activite;
+    }
+
+    public Iterable<Activite> findAllActivites(){
+        return this.activiteRepository.findAll(new Sort("titre"));
     }
 
 }
