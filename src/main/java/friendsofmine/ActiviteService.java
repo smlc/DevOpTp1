@@ -19,9 +19,6 @@ public class ActiviteService {
     ActiviteRepository activiteRepository;
 
     @Autowired
-    UtilisateurRepository utilisateurRepository;
-
-    @Autowired
     UtilisateurService utilisateurService;
 
     public void saveActivite(Activite activite) {
@@ -29,7 +26,7 @@ public class ActiviteService {
         if (activite.getResponsable() == null) {
             throw new ConstraintViolationException(null);
         } else if (activite.getResponsable().getId() == null) {
-            utilisateurRepository.save(activite.getResponsable());
+            utilisateurService.saveUtilisateur(activite.getResponsable());
         }
 
         if (!activite.getResponsable().getActivites().contains(activite)){

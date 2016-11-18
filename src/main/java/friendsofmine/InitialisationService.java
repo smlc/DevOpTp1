@@ -26,7 +26,6 @@ public class InitialisationService {
     Bootstrap bootstrap;
 
     public void initActivites() {
-        System.out.println("--------------------------- Pass 2 ---------------------------");
         activiteService.saveActivite(lindyHop);
         activiteService.saveActivite(randonnee);
         activiteService.saveActivite(taekwondo);

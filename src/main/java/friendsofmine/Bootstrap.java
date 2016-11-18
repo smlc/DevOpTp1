@@ -17,7 +17,6 @@ public class Bootstrap {
 
     @PostConstruct
     public void init() {
-        System.out.println("--------------------------- Pass 1 ---------------------------");
         try {
             initialisationService.initActivites();
         }
