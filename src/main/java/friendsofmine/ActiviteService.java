@@ -1,11 +1,15 @@
 package friendsofmine;
 
+import com.sun.tools.javac.api.ClientCodeWrapper;
 import friendsofmine.repositories.ActiviteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mars on 26/10/16.

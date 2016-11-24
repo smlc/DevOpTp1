@@ -1,14 +1,19 @@
 package friendsofmine;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -42,16 +47,17 @@ public class Utilisateur {
 
     private Date dateNaissance;
 
-    @OneToMany(mappedBy="responsable") @JsonIgnore
-    private List<Activite> activites;
+    @OneToMany(mappedBy="responsable")
+    @JsonIgnore
+    private Collection<Activite> activites;
 
     public Utilisateur() {
-        this.activites = new ArrayList<>(50);
+        this.activites = new ArrayList<Activite>(50);
     }
 
     public Utilisateur(String nom) {
         this.nom = nom;
-        this.activites = new ArrayList<>(50);
+        this.activites = new ArrayList<Activite>(50);
     }
 
     public Utilisateur(String nom, String prenom, String email, String sexe, Date dateNaissance) {
@@ -60,7 +66,7 @@ public class Utilisateur {
         this.email = email;
         this.sexe = sexe;
         this.dateNaissance = dateNaissance;
-        this.activites = new ArrayList<>(50);
+        this.activites = new ArrayList<Activite>(50);
     }
 
     public Utilisateur(String nom, String prenom, String email, String sexe) {
@@ -68,10 +74,10 @@ public class Utilisateur {
         this.prenom = prenom;
         this.email = email;
         this.sexe = sexe;
-        this.activites = new ArrayList<>(50);
+        this.activites = new ArrayList<Activite>(50);
     }
 
-    public List<Activite> getActivites() {
+    public Collection<Activite> getActivites() {
         return activites;
     }
 
@@ -83,23 +89,51 @@ public class Utilisateur {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getNom() {
         return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getPrenom() {
         return prenom;
     }
 
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSexe() {
         return sexe;
     }
 
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
     public Date getDateNaissance() {
         return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public void setActivites(Collection<Activite> activites) {
+        this.activites = activites;
     }
 }
