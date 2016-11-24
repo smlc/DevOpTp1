@@ -1,5 +1,7 @@
 package friendsofmine;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
@@ -40,7 +42,7 @@ public class Utilisateur {
 
     private Date dateNaissance;
 
-    @OneToMany(mappedBy="responsable")
+    @OneToMany(mappedBy="responsable") @JsonIgnore
     private List<Activite> activites;
 
     public Utilisateur() {
@@ -79,5 +81,25 @@ public class Utilisateur {
 
     public Long getId() {
         return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
     }
 }

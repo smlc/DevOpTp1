@@ -44,4 +44,15 @@ public class Activite {
         return responsable;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public String getDescriptif() {
+        return descriptif;
+    }
 }
