@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ActiviteRepository extends PagingAndSortingRepository<Activite,Long> {
+  @Query("select activite from Activite activite join fetch activite.responsable order by activite.titre asc")
+    List<Activite> findAll();
 }
