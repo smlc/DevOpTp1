@@ -63,4 +63,27 @@ class InscriptionRepositoryITest extends Specification {
         fetchInscription.dateInscription != null
     }
 
+
+
+    def "test initialisation of inscriptions by initialisation service"() {
+
+        expect:"3 inscriptions are initialized"
+        initialisationService.maryOnTaekwondo
+        initialisationService.thomOnLindyhop
+        initialisationService.thomOnRandonnee
+
+        and: "Mary has subscribed taekwondo"
+        initialisationService.maryOnTaekwondo.activite == initialisationService.taekwondo
+        initialisationService.maryOnTaekwondo.utilisateur == initialisationService.mary
+
+        and:"Thom has subscribed Lindy hop"
+        initialisationService.thomOnLindyhop.utilisateur == initialisationService.thom
+        initialisationService.thomOnLindyhop.activite == initialisationService.lindyHop
+
+        and:"Thom has subscribed randonnée"
+        initialisationService.thomOnRandonnee.utilisateur == initialisationService.thom
+        initialisationService.thomOnRandonnee.activite == initialisationService.randonnee
+
+    }
+
 }
